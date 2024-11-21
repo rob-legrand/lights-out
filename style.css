@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* FIXME merge */
+
+@font-face {font-family: "Computer Modern"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmr10.ttf) format("truetype")}
+@font-face {font-family: "Computer Modern sans-serif"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmss10.ttf) format("truetype")}
+@font-face {font-family: "Computer Modern Dunhill"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmdunh10.ttf) format("truetype")}
+@font-face {font-family: "Computer Modern small caps"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmcsc10.ttf) format("truetype")}
+
+a {
+   text-decoration: none;
+}
+
+a:link {
+   color: #806040;
+}
+
+a:visited {
+   color: #406080;
+}
+
+a:hover {
+   bottom: 1px; position: relative; text-decoration: underline;
+}
+
+a:active {
+   color: #606060;
+}
+
+body {
+   background-color: #f4f8fc;
+   color: #002040;
+   font-family: Didot, Palatino, "Palatino Linotype", serif;
+}
+
+.bigtop {
+/*
+   font-family: "Computer Modern Dunhill", Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
+*/
+   font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
+   font-size: 250%;
+   font-weight: bold;
+}
+
+.email {
+   font-family: monospace;
+}
+
+.endtag {
+   font-size: 60%;
+   font-style: italic;
+   margin-left: 2em;
+}
+
+.header {
+   font-family: "Computer Modern", Didot, Palatino, "Palatino Linotype", serif;
+   font-size: 150%;
+}
+
+.smalltop {
+   font-family: "Computer Modern", Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
+   font-size: 120%;
+}
+
+.url {
+   font-family: monospace;
+}
