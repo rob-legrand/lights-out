@@ -11,6 +11,8 @@
    var numColumns = parseInt(selectNumColumnsElement.options[selectNumColumnsElement.selectedIndex].value, 10);
    var selectNumLightLevelsElement = document.getElementById('select-num-light-levels');
    var numLightLevels = parseInt(selectNumLightLevelsElement.options[selectNumLightLevelsElement.selectedIndex].value, 10);
+   var selectClickNeighborhoodElement = document.getElementById('select-click-neighborhood');
+   var clickNeighborhood = selectClickNeighborhoodElement.options[selectClickNeighborhoodElement.selectedIndex].value;
    var lightButtons = [[document.getElementById('r1c1'), document.getElementById('r1c2'), document.getElementById('r1c3'), document.getElementById('r1c4'), document.getElementById('r1c5')],
                        [document.getElementById('r2c1'), document.getElementById('r2c2'), document.getElementById('r2c3'), document.getElementById('r2c4'), document.getElementById('r2c5')],
                        [document.getElementById('r3c1'), document.getElementById('r3c2'), document.getElementById('r3c3'), document.getElementById('r3c4'), document.getElementById('r3c5')],
@@ -77,15 +79,21 @@
          times = 1;
       }
       for (whichClick = 0; whichClick < times; whichClick += 1) {
-         flipLight(row - 1, column - 1);
-         flipLight(row - 1, column);
-         flipLight(row - 1, column + 1);
-         flipLight(row, column - 1);
          flipLight(row, column);
-         flipLight(row, column + 1);
-         flipLight(row + 1, column - 1);
-         flipLight(row + 1, column);
-         flipLight(row + 1, column + 1);
+         if (clickNeighborhood === 'Moore' || clickNeighborhood === 'oblique von Neumann') {
+            flipLight(row - 1, column - 1);
+            flipLight(row + 1, column + 1);
+         }
+         if (clickNeighborhood === 'Moore' || clickNeighborhood === 'hex' || clickNeighborhood === 'oblique von Neumann') {
+            flipLight(row - 1, column + 1);
+            flipLight(row + 1, column - 1);
+         }
+         if (clickNeighborhood === 'Moore' || clickNeighborhood === 'hex' || clickNeighborhood === 'von Neumann') {
+            flipLight(row - 1, column);
+            flipLight(row, column - 1);
+            flipLight(row, column + 1);
+            flipLight(row + 1, column);
+         }
       }
    };
 
@@ -123,6 +131,7 @@
       numRows = parseInt(selectNumRowsElement.options[selectNumRowsElement.selectedIndex].value, 10);
       numColumns = parseInt(selectNumColumnsElement.options[selectNumColumnsElement.selectedIndex].value, 10);
       numLightLevels = parseInt(selectNumLightLevelsElement.options[selectNumLightLevelsElement.selectedIndex].value, 10);
+      clickNeighborhood = selectClickNeighborhoodElement.options[selectClickNeighborhoodElement.selectedIndex].value;
       if (numLightLevels === 2) {
          colors = ['#aaaaaa', '#00ff55'];
       } else if (numLightLevels === 3) {
@@ -144,4 +153,5 @@
    selectNumRowsElement.onchange = resizeBoard;
    selectNumColumnsElement.onchange = resizeBoard;
    selectNumLightLevelsElement.onchange = resizeBoard;
+   selectClickNeighborhoodElement.onchange = resizeBoard;
 }());
