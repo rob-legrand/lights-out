@@ -30,6 +30,22 @@
       }
    }
 
+   var clicksMade = [];
+   for (row = 0; row < maxNumRows; row += 1) {
+      clicksMade[row] = [];
+      for (column = 0; column < maxNumColumns; column += 1) {
+         clicksMade[row][column] = 0;
+      }
+   }
+   var clearClicksMade = function () {
+      var row, column;
+      for (row = 0; row < maxNumRows; row += 1) {
+         for (column = 0; column < maxNumColumns; column += 1) {
+            clicksMade[row][column] = 0;
+         }
+      }
+   };
+
    for (row = 0; row < maxNumRows; row += 1) {
       for (column = 0; column < maxNumColumns; column += 1) {
          lightButtons[row][column].style.display = row < numRows && column < numColumns ? '' : 'none';
@@ -43,6 +59,7 @@
             lights[row][column] = 0;
          }
       }
+      clearClicksMade();
    };
 
    var isBoardCleared = function () {
@@ -62,9 +79,20 @@
       for (row = 0; row < numRows; row += 1) {
          for (column = 0; column < numColumns; column += 1) {
             lightButtons[row][column].style.backgroundColor = colors[lights[row][column]];
+            lightButtons[row][column].value = clicksMade[row][column];
          }
       }
       document.getElementById('instructions').innerHTML = isBoardCleared() ? 'A WINNER IS YOU' : 'Can you turn all the lights out?';
+      document.getElementById('total-clicks').innerHTML = (function () {
+         var totalClicks;
+         totalClicks = 0;
+         for (row = 0; row < numRows; row += 1) {
+            for (column = 0; column < numColumns; column += 1) {
+               totalClicks += clicksMade[row][column];
+            }
+         }
+         return totalClicks;
+      }());
    };
 
    var flipLight = function (row, column) {
@@ -112,6 +140,7 @@
    var clickFunc = function (row, column) {
       return function () {
          clickLight(row, column);
+         clicksMade[row][column] = (clicksMade[row][column] + 1) % numLightLevels;
          updateBoard();
       };
    };
@@ -154,4 +183,9 @@
    selectNumColumnsElement.onchange = resizeBoard;
    selectNumLightLevelsElement.onchange = resizeBoard;
    selectClickNeighborhoodElement.onchange = resizeBoard;
+
+   document.querySelector('#reset-clicks-made').onclick = function () {
+      clearClicksMade();
+      updateBoard();
+   };
 }());
