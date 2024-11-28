@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* FIXME merge */
 
 @font-face {font-family: "Computer Modern"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmr10.ttf) format("truetype")}
 @font-face {font-family: "Computer Modern sans-serif"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmss10.ttf) format("truetype")}
@@ -27,15 +26,31 @@ a:active {
 }
 
 body {
-   background-color: #f4f8fc;
-   color: #002040;
+   background-color: #ddeeff;
+   color: #001122;
    font-family: Didot, Palatino, "Palatino Linotype", serif;
+   margin: auto;
+   max-width: 900px;
+   min-width: 600px;
+   touch-action: manipulation;
+   width: 80%;
+}
+
+fieldset, table#gameboard {
+   float: left;
+}
+
+input.light {
+   height: 100px;
+   width: 100px;
+}
+
+label {
+   display: block;
 }
 
 .bigtop {
-/*
-   font-family: "Computer Modern Dunhill", Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
-*/
+   color: #660033;
    font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
    font-size: 250%;
    font-weight: bold;
@@ -57,10 +72,16 @@ body {
 }
 
 .smalltop {
-   font-family: "Computer Modern", Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
-   font-size: 120%;
+   color: #660033;
+   font-family: Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
+   font-size: 100%;
+   font-weight: normal;
 }
 
 .url {
    font-family: monospace;
+}
+
+::selection {
+   background-color: #ffffff;
 }
