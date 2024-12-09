@@ -1,34 +1,17 @@
 @charset "UTF-8";
 
-@font-face {font-family: "Computer Modern"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmr10.ttf) format("truetype")}
-@font-face {font-family: "Computer Modern sans-serif"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmss10.ttf) format("truetype")}
-@font-face {font-family: "Computer Modern Dunhill"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmdunh10.ttf) format("truetype")}
-@font-face {font-family: "Computer Modern small caps"; src: url(http://mirror.ctan.org/fonts/cm/ps-type1/bakoma/ttf/cmcsc10.ttf) format("truetype")}
-
-a {
-   text-decoration: none;
+html {
+   box-sizing: border-box;
 }
 
-a:link {
-   color: #806040;
-}
-
-a:visited {
-   color: #406080;
-}
-
-a:hover {
-   bottom: 1px; position: relative; text-decoration: underline;
-}
-
-a:active {
-   color: #606060;
+*, *:before, *:after {
+   box-sizing: inherit;
 }
 
 body {
-   background-color: #ddeeff;
-   color: #001122;
-   font-family: Didot, Palatino, "Palatino Linotype", serif;
+   background-color: rgb(0, 15, 30);
+   color: rgb(225, 240, 255);
+   font-family: Georgia, Didot, Palatino, "Palatino Linotype", "Book Antiqua", Garamond, "Goudy Old Style", Perpetua, Baskerville, Gentium, serif;
    margin: auto;
    max-width: 900px;
    min-width: 600px;
@@ -40,6 +23,13 @@ fieldset, table#gameboard {
    float: left;
 }
 
+h1 {
+   color: rgb(225, 165, 195);
+   font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
+   font-size: 250%;
+   font-weight: bold;
+}
+
 input.light {
    height: 100px;
    width: 100px;
@@ -49,39 +39,27 @@ label {
    display: block;
 }
 
-.bigtop {
-   color: #660033;
-   font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
-   font-size: 250%;
-   font-weight: bold;
-}
-
-.email {
-   font-family: monospace;
-}
-
-.endtag {
-   font-size: 60%;
-   font-style: italic;
-   margin-left: 2em;
-}
-
-.header {
-   font-family: "Computer Modern", Didot, Palatino, "Palatino Linotype", serif;
-   font-size: 150%;
-}
-
-.smalltop {
-   color: #660033;
-   font-family: Garamond, Georgia, Baskerville, Palatino, "Palatino Linotype", Didot, Bodoni, serif;
-   font-size: 100%;
-   font-weight: normal;
-}
-
-.url {
-   font-family: monospace;
-}
-
 ::selection {
-   background-color: #ffffff;
+   background-color: rgb(30, 15, 0);
+   color: rgb(90, 120, 150);
+}
+
+@media screen and (prefers-color-scheme: light) {
+   body {
+      background-color: rgb(225, 240, 255);
+      color: rgb(0, 15, 30);
+   }
+
+   h1 {
+      color: rgb(90, 0, 45);
+   }
+
+   .hint {
+      color: rgb(255, 255, 255);
+   }
+
+   ::selection {
+      background-color: rgb(255, 240, 225);
+      color: rgb(90, 120, 150);
+   }
 }
