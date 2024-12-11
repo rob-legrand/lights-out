@@ -19,7 +19,7 @@ body {
    width: 80%;
 }
 
-fieldset, table#gameboard {
+fieldset, #gameboard {
    float: left;
 }
 
@@ -30,13 +30,13 @@ h1 {
    font-weight: bold;
 }
 
-input.light {
-   height: 100px;
-   width: 100px;
-}
-
 label {
    display: block;
+}
+
+.light {
+   height: 100px;
+   width: 100px;
 }
 
 ::selection {
