@@ -1,4 +1,44 @@
-/*jslint browser: true, vars: true, indent: 3 */
+/*jslint browser */
+
+// All the code below will be run once the page content finishes loading.
+document.addEventListener('DOMContentLoaded', function () {
+   'use strict';
+
+   const lightsOut = (function () {
+
+      // An object to hold private functions to operate on lights-out boards.
+      const util = Object.freeze({
+         deepCopy: (oldThing, func) => (
+            // Create a new object, deeply copied, with func applied at each level.
+            typeof func === 'function'
+            ? func
+            : (x) => x
+         )(
+            Array.isArray(oldThing)
+            // If it's an array, use map directly.
+            ? oldThing.map(
+               (x) => util.deepCopy(x, func)
+            )
+            : typeof oldThing === 'object'
+            // If it's a non-array object, we must be less direct.
+            ? Object.fromEntries(
+               Object.entries(oldThing).map(
+                  (x) => [x[0], util.deepCopy(x[1], func)]
+               )
+            )
+            // Otherwise, no recursion is required.
+            : oldThing
+         )
+      });
+
+      // An object to hold public functions to operate on lights-out boards.
+      const self = Object.freeze({
+      });
+
+      return self;
+   }());
+
+});
 
 (function () {
    'use strict';
