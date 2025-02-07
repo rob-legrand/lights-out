@@ -4,10 +4,84 @@
 document.addEventListener('DOMContentLoaded', function () {
    'use strict';
 
+   const defaultNumRows = 4;
+   const defaultNumColumns = 3;
+   const defaultNumLightLevels = 3;
+   const validClickNeighborhoods = [
+      'Moore',
+      'hex',
+      'von Neumann',
+      'oblique von Neumann'
+   ];
+
    const lightsOut = (function () {
 
       // An object to hold private functions to operate on lights-out boards.
       const util = Object.freeze({
+         createUnfrozenBoard: (oldBoard) => ({
+            board: (
+               // If the old board looks valid . . .
+               (
+                  Array.isArray(oldBoard?.board)
+                  && oldBoard.board.length > 0
+                  && oldBoard.board.every(
+                     (oldRow) => (
+                        Array.isArray(oldRow) && oldRow.length > 0
+                        && oldRow.length === oldBoard.board[0].length
+                     )
+                  )
+               )
+               // . . . use it, but correct any invalid lights.
+               ? oldBoard.board.map(
+                  (oldRow) => oldRow.map(
+                     (oldLight) => (
+                        (
+                           Number.isFinite(oldLight)
+                           && oldLight >= 0
+                        )
+                        ? Math.floor(oldLight)
+                        : 0
+                     )
+                  )
+               )
+               // Otherwise, create a brand-new board.
+               // Use numRows and numColumns if they exist.
+               : Array.from(
+                  {length: (
+                     (
+                        Number.isFinite(oldBoard?.numRows)
+                        && oldBoard.numRows >= 1
+                     )
+                     ? Math.floor(oldBoard.numRows)
+                     : defaultNumRows
+                  )},
+                  () => Array.from(
+                     {length: (
+                        (
+                           Number.isFinite(oldBoard?.numColumns)
+                           && oldBoard.numColumns >= 1
+                        )
+                        ? Math.floor(oldBoard.numColumns)
+                        : defaultNumColumns
+                     )},
+                     () => 0
+                  )
+               )
+            ),
+            numLightLevels: (
+               (
+                  Number.isFinite(oldBoard?.numLightLevels)
+                  && oldBoard.numLightLevels >= 2
+               )
+               ? Math.floor(oldBoard.numLightLevels)
+               : defaultNumLightLevels
+            ),
+            clickNeighborhood: (
+               validClickNeighborhoods.includes(oldBoard?.clickNeighborhood)
+               ? oldBoard.clickNeighborhood
+               : validClickNeighborhoods[0]
+            )
+         }),
          deepCopy: (oldThing, func) => (
             // Create a new object, deeply copied, with func applied at each level.
             typeof func === 'function'
