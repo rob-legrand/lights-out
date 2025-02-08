@@ -107,6 +107,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // An object to hold public functions to operate on lights-out boards.
       const self = Object.freeze({
+         click: function (oldBoard, clickRow, clickColumn, times) {
+            const numLightLevels = (
+               (
+                  Number.isFinite(oldBoard?.numLightLevels)
+                  && oldBoard.numLightLevels >= 2
+               )
+               ? Math.floor(oldBoard.numLightLevels)
+               : defaultNumLightLevels
+            );
+            clickRow = (
+               (Number.isInteger(clickRow) && clickRow >= 0)
+               ? clickRow
+               : Number.POSITIVE_INFINITY
+            );
+            clickColumn = (
+               (Number.isInteger(clickColumn) && clickColumn >= 0)
+               ? clickColumn
+               : Number.POSITIVE_INFINITY
+            );
+            times = (
+               (Number.isInteger(times) && times >= 0)
+               ? times
+               : 1
+            );
+            return util.deepCopy(
+               {
+                  numLightLevels: numLightLevels,
+                  board: oldBoard.board.map(
+                     (oldRow, whichRow) => oldRow.map(
+                        (oldLight, whichColumn) => (
+                           (
+                              (
+                                 Number.isFinite(oldLight)
+                                 && oldLight >= 0
+                              )
+                              ? Math.floor(oldLight)
+                              : 0
+                           ) + numLightLevels - (
+                              Math.abs(
+                                 clickRow - whichRow
+                              ) + Math.abs(
+                                 clickColumn - whichColumn
+                              ) <= 1.5
+                              ? times
+                              : 0
+                           )
+                        ) % numLightLevels
+                     )
+                  )
+               },
+               Object.freeze
+            );
+         }
       });
 
       return self;
