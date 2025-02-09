@@ -159,7 +159,12 @@ document.addEventListener('DOMContentLoaded', function () {
                },
                Object.freeze
             );
-         }
+         },
+         isCleared: (board) => board.board.every(
+            (row) => row.every(
+               (light) => light === 0
+            )
+         )
       });
 
       return self;
