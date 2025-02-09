@@ -174,6 +174,19 @@ document.addEventListener('DOMContentLoaded', function () {
       return self;
    }());
 
+   (function () {
+      let lightsOutBoard;
+
+      const gameboardElement = document.querySelector('#gameboard');
+      const selectNumRowsElement = document.querySelector('#select-num-rows');
+      const selectNumColumnsElement = document.querySelector('#select-num-columns');
+      const selectNumLightLevelsElement = document.querySelector('#select-num-light-levels');
+      const selectClickNeighborhoodElement = document.querySelector('#select-click-neighborhood');
+
+      const updateLightsOut = function () {
+      };
+
+   }());
 });
 
 (function () {
