@@ -160,6 +160,10 @@ document.addEventListener('DOMContentLoaded', function () {
                Object.freeze
             );
          },
+         createBoard: (oldBoard) => util.deepCopy(
+            util.createUnfrozenBoard(oldBoard),
+            Object.freeze
+         ),
          isCleared: (board) => board.board.every(
             (row) => row.every(
                (light) => light === 0
