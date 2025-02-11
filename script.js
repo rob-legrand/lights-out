@@ -102,6 +102,18 @@ document.addEventListener('DOMContentLoaded', function () {
             )
             // Otherwise, no recursion is required.
             : oldThing
+         ),
+         randomizeBoardOnce: (oldBoard) => oldBoard.board.reduce(
+            (boardSoFar, oldRow, whichRow) => oldRow.reduce(
+               (rowSoFar, ignore, whichColumn) => self.click(
+                  rowSoFar,
+                  whichRow,
+                  whichColumn,
+                  Math.floor(Math.random() * oldBoard.numLightLevels)
+               ),
+               boardSoFar
+            ),
+            oldBoard
          )
       });
 
