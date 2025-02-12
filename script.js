@@ -182,18 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
             )
          ),
          randomizeBoard: function (oldBoard) {
-            let newBoard;
-            newBoard = oldBoard;
-            oldBoard.board.forEach(function (oldRow, whichRow) {
-               oldRow.forEach(function (ignore, whichColumn) {
-                  newBoard = self.click(
-                     newBoard,
-                     whichRow,
-                     whichColumn,
-                     Math.floor(Math.random() * oldBoard.numLightLevels)
-                  );
-               });
-            });
+            const newBoard = util.randomizeBoardOnce(oldBoard);
             return (
                self.isCleared(newBoard)
                ? self.randomizeBoard(newBoard)
