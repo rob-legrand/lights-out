@@ -206,6 +206,29 @@ document.addEventListener('DOMContentLoaded', function () {
       const updateLightsOut = function () {
       };
 
+      const getUsersSettings = function () {
+         lightsOutBoard = lightsOut.randomizeBoard(lightsOut.createBoard({
+            numRows: parseInt(selectNumRowsElement.options[
+               selectNumRowsElement.selectedIndex
+            ].value, 10),
+            numColumns: parseInt(selectNumColumnsElement.options[
+               selectNumColumnsElement.selectedIndex
+            ].value, 10),
+            numLightLevels: parseInt(selectNumLightLevelsElement.options[
+               selectNumLightLevelsElement.selectedIndex
+            ].value, 10)
+         }));
+         updateLightsOut();
+      };
+
+      selectNumRowsElement.addEventListener('change', getUsersSettings);
+      selectNumColumnsElement.addEventListener('change', getUsersSettings);
+      selectNumLightLevelsElement.addEventListener('change', getUsersSettings);
+      selectClickNeighborhoodElement.addEventListener('change', getUsersSettings);
+      document.querySelector('#new-game').addEventListener('click', getUsersSettings);
+
+      getUsersSettings();
+
    }());
 });
 
