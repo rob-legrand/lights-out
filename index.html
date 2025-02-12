@@ -14,7 +14,50 @@
 
 <p id="instructions"></p>
 
-<table id="gameboard"><tr><td>
+<div class="lights-out-board" id="gameboard">
+<!--
+   <div>
+      <button type="button"></button>
+      . . .
+   </div>
+   . . .
+-->
+</div>
+
+<fieldset class="options-area">
+   <legend>Options</legend>
+   <label for="select-num-rows">Number of rows:&nbsp;<select id="select-num-rows">
+      <option>2</option>
+      <option>3</option>
+      <option selected="selected">4</option>
+      <option>5</option>
+      <option>6</option>
+   </select></label>
+   <label for="select-num-columns">Number of columns:&nbsp;<select id="select-num-columns">
+      <option>2</option>
+      <option selected="selected">3</option>
+      <option>4</option>
+      <option>5</option>
+   </select></label>
+   <label for="select-num-light-levels">Number of light levels:&nbsp;<select id="select-num-light-levels">
+      <option>2</option>
+      <option selected="selected">3</option>
+      <option>4</option>
+   </select></label>
+   <label for="select-click-neighborhood">Click neighborhood:&nbsp;<select id="select-click-neighborhood">
+      <option>Moore</option>
+      <option>hex</option>
+      <option selected="selected">von Neumann</option>
+      <option>oblique von Neumann</option>
+   </select></label>
+</fieldset>
+
+<fieldset class="controls-area">
+   <legend>Controls</legend>
+   <button id="new-game" type="button">Start new game</button>
+</fieldset>
+
+<table class="lights-out-board"><tr><td>
    <button class="light" id="r1c1" type="button"></button>
 </td><td>
    <button class="light" id="r1c2" type="button"></button>
@@ -75,39 +118,6 @@
 </td><td>
    <button class="light" id="r6c5" type="button"></button>
 </td></tr></table>
-
-<fieldset class="options-area">
-   <legend>Options</legend>
-   <label for="select-num-rows">Number of rows:&nbsp;<select id="select-num-rows">
-      <option>2</option>
-      <option>3</option>
-      <option selected="selected">4</option>
-      <option>5</option>
-      <option>6</option>
-   </select></label>
-   <label for="select-num-columns">Number of columns:&nbsp;<select id="select-num-columns">
-      <option>2</option>
-      <option selected="selected">3</option>
-      <option>4</option>
-      <option>5</option>
-   </select></label>
-   <label for="select-num-light-levels">Number of light levels:&nbsp;<select id="select-num-light-levels">
-      <option>2</option>
-      <option selected="selected">3</option>
-      <option>4</option>
-   </select></label>
-   <label for="select-click-neighborhood">Click neighborhood:&nbsp;<select id="select-click-neighborhood">
-      <option>Moore</option>
-      <option>hex</option>
-      <option selected="selected">von Neumann</option>
-      <option>oblique von Neumann</option>
-   </select></label>
-</fieldset>
-
-<fieldset class="controls-area">
-   <legend>Controls</legend>
-   <button id="new-game" type="button">Start new game</button>
-</fieldset>
 
 <script src="script.js"></script>
 

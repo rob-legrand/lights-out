@@ -19,10 +19,6 @@ body {
    width: 80%;
 }
 
-fieldset, #gameboard {
-   float: left;
-}
-
 h1 {
    color: rgb(225, 165, 195);
    font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
@@ -35,6 +31,25 @@ label {
 }
 
 .light {
+   height: 100px;
+   width: 100px;
+}
+
+.lights-out-board {
+   align-items: center;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.lights-out-board div {
+   align-items: center;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+.lights-out-board div button {
    height: 100px;
    width: 100px;
 }
