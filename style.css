@@ -35,6 +35,34 @@ label {
    width: 100px;
 }
 
+.light0of2, .light0of3, .light0of4 {
+   background-color: rgb(60, 60, 60);
+}
+
+.light1of2 {
+   background-color: rgb(0, 180, 90);
+}
+
+.light1of3 {
+   background-color: rgb(30, 75, 120);
+}
+
+.light1of4 {
+   background-color: rgb(0, 90, 135);
+}
+
+.light2of3 {
+   background-color: rgb(0, 90, 180);
+}
+
+.light2of4 {
+   background-color: rgb(60, 150, 0);
+}
+
+.light3of4 {
+   background-color: rgb(180, 0, 60);
+}
+
 .lights-out-board {
    align-items: center;
    display: flex;
@@ -71,6 +99,34 @@ label {
 
    .hint {
       color: rgb(255, 255, 255);
+   }
+
+   .light0of2, .light0of3, .light0of4 {
+      background-color: rgb(180, 180, 180);
+   }
+
+   .light1of2 {
+      background-color: rgb(0, 255, 90);
+   }
+
+   .light1of3 {
+      background-color: rgb(120, 150, 210);
+   }
+
+   .light1of4 {
+      background-color: rgb(0, 120, 180);
+   }
+
+   .light2of3 {
+      background-color: rgb(0, 120, 240);
+   }
+
+   .light2of4 {
+      background-color: rgb(105, 195, 0);
+   }
+
+   .light3of4 {
+      background-color: rgb(255, 0, 90);
    }
 
    ::selection {
