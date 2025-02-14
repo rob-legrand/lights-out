@@ -234,6 +234,15 @@ document.addEventListener('DOMContentLoaded', function () {
          selectNumLightLevelsElement.selectedIndex = [...selectNumLightLevelsElement.options].findIndex(
             (option) => parseInt(option.value, 10) === lightsOutBoard.numLightLevels
          );
+
+         [...gameboardElement.childNodes].forEach(function (rowDiv, whichRow) {
+            [...rowDiv.childNodes].forEach(function (lightButton, whichColumn) {
+               lightButton.addEventListener('click', function () {
+                  lightsOutBoard = lightsOut.click(lightsOutBoard, whichRow, whichColumn);
+                  updateLightsOut();
+               });
+            });
+         });
       };
 
       const getUsersSettings = function () {
