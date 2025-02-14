@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', function () {
    (function () {
       let lightsOutBoard;
 
+      const localStorageKey = 'lights-out';
       const gameboardElement = document.querySelector('#gameboard');
       const selectNumRowsElement = document.querySelector('#select-num-rows');
       const selectNumColumnsElement = document.querySelector('#select-num-columns');
@@ -204,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectClickNeighborhoodElement = document.querySelector('#select-click-neighborhood');
 
       const updateLightsOut = function () {
+         localStorage.setItem(localStorageKey, JSON.stringify(lightsOutBoard));
+
          document.querySelector('#instructions').textContent = (
             lightsOut.isCleared(lightsOutBoard)
             ? 'A WINNER IS YOU'
@@ -266,7 +269,8 @@ document.addEventListener('DOMContentLoaded', function () {
       selectClickNeighborhoodElement.addEventListener('change', getUsersSettings);
       document.querySelector('#new-game').addEventListener('click', getUsersSettings);
 
-      getUsersSettings();
+      lightsOutBoard = lightsOut.createBoard(JSON.parse(localStorage.getItem(localStorageKey)));
+      updateLightsOut();
 
    }());
 });
