@@ -204,6 +204,36 @@ document.addEventListener('DOMContentLoaded', function () {
       const selectClickNeighborhoodElement = document.querySelector('#select-click-neighborhood');
 
       const updateLightsOut = function () {
+         document.querySelector('#instructions').textContent = (
+            lightsOut.isCleared(lightsOutBoard)
+            ? 'A WINNER IS YOU'
+            : 'Can you turn all the lights out?'
+         );
+
+         gameboardElement.replaceChildren(
+            ...lightsOutBoard.board.map(function (row) {
+               const newDiv = document.createElement('div');
+               newDiv.replaceChildren(
+                  ...row.map(function (light) {
+                     const newButton = document.createElement('button');
+                     newButton.classList.add('light' + light + 'of' + lightsOutBoard.numLightLevels);
+                     newButton.type = 'button';
+                     return newButton;
+                  })
+               );
+               return newDiv;
+            })
+         );
+
+         selectNumRowsElement.selectedIndex = [...selectNumRowsElement.options].findIndex(
+            (option) => parseInt(option.value, 10) === lightsOutBoard.board.length
+         );
+         selectNumColumnsElement.selectedIndex = [...selectNumColumnsElement.options].findIndex(
+            (option) => parseInt(option.value, 10) === lightsOutBoard.board[0].length
+         );
+         selectNumLightLevelsElement.selectedIndex = [...selectNumLightLevelsElement.options].findIndex(
+            (option) => parseInt(option.value, 10) === lightsOutBoard.numLightLevels
+         );
       };
 
       const getUsersSettings = function () {
