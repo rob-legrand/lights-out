@@ -9,14 +9,14 @@ html {
 }
 
 body {
+   align-items: center;
    background-color: rgb(0, 15, 30);
    color: rgb(225, 240, 255);
+   display: flex;
+   flex-direction: column;
    font-family: Georgia, Didot, Palatino, "Palatino Linotype", "Book Antiqua", Garamond, "Goudy Old Style", Perpetua, Baskerville, Gentium, serif;
-   margin: auto;
-   max-width: 900px;
-   min-width: 600px;
+   justify-content: center;
    touch-action: manipulation;
-   width: 80%;
 }
 
 h1 {
