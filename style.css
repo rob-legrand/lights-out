@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+:root {
+   --monospace: Inconsolata, Consolas, "Andale Mono", AndaleMono, monospace;
+   --sans-serif: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
+   --serif: Georgia, Didot, Palatino, "Palatino Linotype", "Book Antiqua", Garamond, "Goudy Old Style", Perpetua, Baskerville, Gentium, serif;
+}
+
 html {
    box-sizing: border-box;
 }
@@ -14,14 +20,14 @@ body {
    color: rgb(225, 240, 255);
    display: flex;
    flex-direction: column;
-   font-family: Georgia, Didot, Palatino, "Palatino Linotype", "Book Antiqua", Garamond, "Goudy Old Style", Perpetua, Baskerville, Gentium, serif;
+   font-family: var(--serif);
    justify-content: center;
    touch-action: manipulation;
 }
 
 h1 {
    color: rgb(225, 165, 195);
-   font-family: Futura, "Century Gothic", Geneva, Tahoma, Verdana, Arial, sans-serif;
+   font-family: var(--sans-serif);
    font-size: 250%;
    font-weight: bold;
 }
