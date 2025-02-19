@@ -228,6 +228,9 @@ document.addEventListener('DOMContentLoaded', function () {
          selectNumLightLevelsElement.selectedIndex = [...selectNumLightLevelsElement.options].findIndex(
             (option) => parseInt(option.value, 10) === lightsOutBoard.numLightLevels
          );
+         selectClickNeighborhoodElement.selectedIndex = [...selectClickNeighborhoodElement.options].findIndex(
+            (option) => option.value === lightsOutBoard.clickNeighborhood
+         );
 
          [...gameboardElement.childNodes].forEach(function (rowDiv, whichRow) {
             [...rowDiv.childNodes].forEach(function (lightButton, whichColumn) {
@@ -249,7 +252,10 @@ document.addEventListener('DOMContentLoaded', function () {
             ].value, 10),
             numLightLevels: parseInt(selectNumLightLevelsElement.options[
                selectNumLightLevelsElement.selectedIndex
-            ].value, 10)
+            ].value, 10),
+            clickNeighborhood: selectClickNeighborhoodElement.options[
+               selectClickNeighborhoodElement.selectedIndex
+            ].value
          }));
          updateLightsOut();
       };
