@@ -120,14 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // An object to hold public functions to operate on lights-out boards.
       const self = Object.freeze({
          click: function (oldBoard, clickRow, clickColumn, times) {
-            const numLightLevels = (
-               (
-                  Number.isFinite(oldBoard?.numLightLevels)
-                  && oldBoard.numLightLevels >= 2
-               )
-               ? Math.floor(oldBoard.numLightLevels)
-               : defaultNumLightLevels
-            );
+            oldBoard = self.createBoard(oldBoard);
             clickRow = (
                (Number.isInteger(clickRow) && clickRow >= 0)
                ? clickRow
@@ -143,34 +136,32 @@ document.addEventListener('DOMContentLoaded', function () {
                ? times
                : 1
             );
-            return util.deepCopy(
-               {
-                  numLightLevels: numLightLevels,
-                  board: oldBoard.board.map(
-                     (oldRow, whichRow) => oldRow.map(
-                        (oldLight, whichColumn) => (
+            return self.createBoard({
+               board: oldBoard.board.map(
+                  (oldRow, whichRow) => oldRow.map(
+                     (oldLight, whichColumn) => (
+                        (
                            (
-                              (
-                                 Number.isFinite(oldLight)
-                                 && oldLight >= 0
-                              )
-                              ? Math.floor(oldLight)
-                              : 0
-                           ) + numLightLevels - (
-                              Math.abs(
-                                 clickRow - whichRow
-                              ) + Math.abs(
-                                 clickColumn - whichColumn
-                              ) <= 1.5
-                              ? times
-                              : 0
+                              Number.isFinite(oldLight)
+                              && oldLight >= 0
                            )
-                        ) % numLightLevels
-                     )
+                           ? Math.floor(oldLight)
+                           : 0
+                        ) + times * oldBoard.numLightLevels - (
+                           Math.abs(
+                              clickRow - whichRow
+                           ) + Math.abs(
+                              clickColumn - whichColumn
+                           ) <= 1.5
+                           ? times
+                           : 0
+                        )
+                     ) % oldBoard.numLightLevels
                   )
-               },
-               Object.freeze
-            );
+               ),
+               numLightLevels: oldBoard.numLightLevels,
+               clickNeighborhood: oldBoard.clickNeighborhood
+            });
          },
          createBoard: (oldBoard) => util.deepCopy(
             util.createUnfrozenBoard(oldBoard),
