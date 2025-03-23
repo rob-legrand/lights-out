@@ -148,13 +148,28 @@ document.addEventListener('DOMContentLoaded', function () {
                            ? Math.floor(oldLight)
                            : 0
                         ) + times * oldBoard.numLightLevels - (
-                           Math.abs(
-                              clickRow - whichRow
-                           ) + Math.abs(
-                              clickColumn - whichColumn
-                           ) <= 1.5
-                           ? times
-                           : 0
+                           oldBoard.clickNeighborhood === 'Moore'
+                           ? (
+                              Math.max(
+                                 Math.abs(
+                                    clickRow - whichRow
+                                 ),
+                                 Math.abs(
+                                    clickColumn - whichColumn
+                                 )
+                              ) <= 1.5
+                              ? times
+                              : 0
+                           )
+                           : (
+                              Math.abs(
+                                 clickRow - whichRow
+                              ) + Math.abs(
+                                 clickColumn - whichColumn
+                              ) <= 1.5
+                              ? times
+                              : 0
+                           )
                         )
                      ) % oldBoard.numLightLevels
                   )
