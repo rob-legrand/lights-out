@@ -150,18 +150,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         ) + times * oldBoard.numLightLevels - (
                            oldBoard.clickNeighborhood === 'Moore'
                            ? (
-                              Math.max(
+                              (
                                  Math.abs(
                                     clickRow - whichRow
-                                 ),
-                                 Math.abs(
+                                 ) <= 1.5
+                                 && Math.abs(
                                     clickColumn - whichColumn
-                                 )
-                              ) <= 1.5
+                                 ) <= 1.5
+                              )
                               ? times
                               : 0
                            )
                            : (
+                              // Assume default click neighborhood: von Neumann.
                               Math.abs(
                                  clickRow - whichRow
                               ) + Math.abs(
