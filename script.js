@@ -161,6 +161,20 @@ document.addEventListener('DOMContentLoaded', function () {
                               ? times
                               : 0
                            )
+                           : oldBoard.clickNeighborhood === 'oblique von Neumann'
+                           ? (
+                              (
+                                 Math.abs(
+                                    clickRow - whichRow
+                                 ) <= 1.5
+                                 && Math.abs(
+                                    clickColumn - whichColumn
+                                 ) <= 1.5
+                                 && (whichRow + whichColumn) % 2 === (clickRow + clickColumn) % 2
+                              )
+                              ? times
+                              : 0
+                           )
                            : (
                               // Assume default click neighborhood: von Neumann.
                               Math.abs(
