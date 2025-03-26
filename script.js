@@ -161,6 +161,23 @@ document.addEventListener('DOMContentLoaded', function () {
                               ? times
                               : 0
                            )
+                           : oldBoard.clickNeighborhood === 'hex'
+                           ? (
+                              (
+                                 Math.abs(
+                                    clickRow - whichRow
+                                 ) <= 1.5
+                                 && Math.abs(
+                                    clickColumn - whichColumn
+                                 ) <= 1.5
+                                 && Math.abs(
+                                    clickRow - whichRow
+                                    + clickColumn - whichColumn
+                                 ) <= 1.5
+                              )
+                              ? times
+                              : 0
+                           )
                            : oldBoard.clickNeighborhood === 'oblique von Neumann'
                            ? (
                               (
