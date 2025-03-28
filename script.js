@@ -187,7 +187,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                  && Math.abs(
                                     clickColumn - whichColumn
                                  ) <= 1.5
-                                 && (whichRow + whichColumn) % 2 === (clickRow + clickColumn) % 2
+                                 && (
+                                    Math.abs(
+                                       clickRow - whichRow
+                                       + clickColumn - whichColumn
+                                    ) <= 0.5
+                                    || Math.abs(
+                                       clickRow - whichRow
+                                       - (clickColumn - whichColumn)
+                                    ) <= 0.5
+                                 )
                               )
                               ? times
                               : 0
